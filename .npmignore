@@ -1,0 +1,56 @@
+# Source files
+src/
+*.js
+!dist/*.js
+
+# Development files
+rollup.config.js
+.eslintrc*
+.prettierrc*
+.editorconfig
+
+# Build tools
+node_modules/
+.npmrc
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+docs/
+*.md
+!README.md
+
+# Tests
+test/
+tests/
+__tests__/
+*.test.js
+*.spec.js
+
+# Examples
+examples/
+demo/
+samples/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+*.tmp
+*.temp
+.cache/

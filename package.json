@@ -1,0 +1,55 @@
+{
+    "name": "smart-id-scanner",
+    "version": "1.0.0",
+    "description": "A complete vanilla JavaScript ID card scanner with camera integration, auto-capture, and smart detection features",
+    "main": "dist/index.js",
+    "module": "dist/index.esm.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist",
+        "README.md",
+        "LICENSE"
+    ],
+    "scripts": {
+        "build": "rollup -c",
+        "dev": "rollup -c -w",
+        "prepublishOnly": "npm run build",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lint": "eslint src --ext .js",
+        "format": "prettier --write src/**/*.js",
+        "clean": "rimraf dist"
+    },
+    "keywords": [
+        "id-scanner",
+        "card-scanner",
+        "camera",
+        "auto-capture",
+        "document-scanner",
+        "vanilla-js",
+        "no-dependencies",
+        "mobile-friendly",
+        "ocr-ready",
+        "image-processing"
+    ],
+    "author": "Ayush Raval",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/yourusername/smart-id-scanner.git"
+    },
+    "bugs": {
+        "url": "https://github.com/yourusername/smart-id-scanner/issues"
+    },
+    "homepage": "https://github.com/yourusername/smart-id-scanner#readme",
+    "engines": {
+        "node": ">=12.0.0"
+    },
+    "devDependencies": {
+        "@rollup/plugin-commonjs": "^25.0.0",
+        "@rollup/plugin-node-resolve": "^15.0.0",
+        "@rollup/plugin-terser": "^0.4.4",
+        "rimraf": "^5.0.0",
+        "rollup": "^4.0.0",
+        "rollup-plugin-copy": "^3.5.0"
+    }
+}

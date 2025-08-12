@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart ID Scanner Demo</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .demo-section {
+            margin-bottom: 30px;
+        }
+
+        .demo-section h3 {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .output {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            font-family: monospace;
+            font-size: 14px;
+            white-space: pre-wrap;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: #1976d2;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1565c0;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🔍 Smart ID Scanner Demo</h1>
+
+        <div class="demo-section">
+            <h3>ID Scanner</h3>
+            <div id="scanner-container"></div>
+        </div>
+
+        <div class="demo-section">
+            <h3>Controls</h3>
+            <div class="button-group">
+                <button class="btn btn-primary" onclick="getValue()">Get Value</button>
+                <button class="btn btn-secondary" onclick="resetScanner()">Reset</button>
+                <button class="btn btn-secondary" onclick="disableScanner()">Disable</button>
+                <button class="btn btn-secondary" onclick="enableScanner()">Enable</button>
+                <button class="btn btn-danger" onclick="destroyScanner()">Destroy</button>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h3>Output</h3>
+            <div id="output" class="output">Ready to scan...</div>
+        </div>
+    </div>
+
+    <script src="dist/index.js"></script>
+    <script>
+        let scanner;
+
+        // Initialize scanner when page loads
+        document.addEventListener('DOMContentLoaded', function () {
+            initializeScanner();
+        });
+
+        function initializeScanner() {
+            scanner = new CardScanner('#scanner-container', {
+                label: 'Upload ID Card',
+                required: true,
+                enableAutoCapture: true,
+                themeColor: '#1976d2',
+                onFileChange: (file) => {
+                    logOutput('File changed:', file);
+                },
+                onSuccess: (message) => {
+                    logOutput('Success:', message);
+                },
+                onError: (error) => {
+                    logOutput('Error:', error);
+                },
+                onCancel: () => {
+                    logOutput('Upload cancelled');
+                }
+            });
+            logOutput('Scanner initialized successfully');
+        }
+
+        function getValue() {
+            if (scanner) {
+                const value = scanner.getValue();
+                logOutput('Current value:', value);
+            } else {
+                logOutput('Scanner not initialized');
+            }
+        }
+
+        function resetScanner() {
+            if (scanner) {
+                scanner.reset();
+                logOutput('Scanner reset');
+            } else {
+                logOutput('Scanner not initialized');
+            }
+        }
+
+        function disableScanner() {
+            if (scanner) {
+                scanner.disable();
+                logOutput('Scanner disabled');
+            } else {
+                logOutput('Scanner not initialized');
+            }
+        }
+
+        function enableScanner() {
+            if (scanner) {
+                scanner.enable();
+                logOutput('Scanner enabled');
+            } else {
+                logOutput('Scanner not initialized');
+            }
+        }
+
+        function destroyScanner() {
+            if (scanner) {
+                scanner.destroy();
+                scanner = null;
+                logOutput('Scanner destroyed');
+
+                // Re-initialize after a short delay
+                setTimeout(() => {
+                    initializeScanner();
+                }, 1000);
+            } else {
+                logOutput('Scanner not initialized');
+            }
+        }
+
+        function logOutput(...args) {
+            const output = document.getElementById('output');
+            const timestamp = new Date().toLocaleTimeString();
+            const message = `[${timestamp}] ${args.map(arg =>
+                typeof arg === 'object' ? JSON.stringify(arg, null, 2) : arg
+            ).join(' ')}\n`;
+
+            output.textContent += message;
+            output.scrollTop = output.scrollHeight;
+        }
+    </script>
+</body>
+
+</html>
