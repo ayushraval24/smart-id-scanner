@@ -35,12 +35,12 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/yourusername/smart-id-scanner.git"
+        "url": "https://github.com/ayushraval24/smart-id-scanner"
     },
     "bugs": {
-        "url": "https://github.com/yourusername/smart-id-scanner/issues"
+        "url": "https://github.com/ayushraval24/smart-id-scanner/issues"
     },
-    "homepage": "https://github.com/yourusername/smart-id-scanner#readme",
+    "homepage": "https://github.com/ayushraval24/smart-id-scanner#readme",
     "engines": {
         "node": ">=12.0.0"
     },
