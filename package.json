@@ -1,6 +1,6 @@
 {
     "name": "smart-id-scanner",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "description": "A complete vanilla JavaScript ID card scanner with camera integration, auto-capture, and smart detection features",
     "main": "dist/index.js",
     "module": "dist/index.esm.js",
