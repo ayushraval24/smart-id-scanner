@@ -307,10 +307,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If you have any questions or need help, please:
 
-1. Check the [documentation](https://github.com/yourusername/smart-id-scanner#readme)
-2. Search [existing issues](https://github.com/yourusername/smart-id-scanner/issues)
-3. Create a [new issue](https://github.com/yourusername/smart-id-scanner/issues/new)
+1. Check the [documentation](https://github.com/ayurhraval24/smart-id-scanner#readme)
+2. Search [existing issues](https://github.com/ayurhraval24/smart-id-scanner/issues)
+3. Create a [new issue](https://github.com/ayurhraval24/smart-id-scanner/issues/new)
 
 ---
 
-Made with ❤️ by [Ayush Raval](https://github.com/yourusername)
+Made with ❤️ by [Ayush Raval](https://github.com/ayurhraval24)
